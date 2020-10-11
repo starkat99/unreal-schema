@@ -4,7 +4,7 @@ If your editor or validator supports [Schema Catalogs](https://www.schemastore.o
 following schema catalog (in Visual Studio 2019, this is under Tools->Options->Text Editor->Json->Schema):
 
 ```
-https://raw.githubusercontent.com/starkat99/unreal-schema/master/catalog.json
+https://raw.githubusercontent.com/starkat99/unreal-schema/main/catalog.json
 ```
 
 Otherwise, you can associate the following schemas to file types in your editor/validator:
@@ -12,11 +12,11 @@ Otherwise, you can associate the following schemas to file types in your editor/
 ### `.uproject` files
 
 ```
-https://raw.githubusercontent.com/starkat99/unreal-schema/master/uproject.schema.json
+https://raw.githubusercontent.com/starkat99/unreal-schema/main/uproject.schema.json
 ```
 
 ### `.uplugin` files
 
 ```
-https://raw.githubusercontent.com/starkat99/unreal-schema/master/uplugin.schema.json
+https://raw.githubusercontent.com/starkat99/unreal-schema/main/uplugin.schema.json
 ```

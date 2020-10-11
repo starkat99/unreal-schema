@@ -8,7 +8,7 @@
             "fileMatch": [
                 "*.uproject"
             ],
-            "url": "https://raw.githubusercontent.com/starkat99/unreal-schema/master/uproject.schema.json"
+            "url": "https://raw.githubusercontent.com/starkat99/unreal-schema/main/uproject.schema.json"
         },
         {
             "name": "Unreal Engine Plugin",
@@ -16,7 +16,7 @@
             "fileMatch": [
                 "*.uplugin"
             ],
-            "url": "https://raw.githubusercontent.com/starkat99/unreal-schema/master/uplugin.schema.json"
+            "url": "https://raw.githubusercontent.com/starkat99/unreal-schema/main/uplugin.schema.json"
         }
     ]
 }
