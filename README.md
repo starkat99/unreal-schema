@@ -20,3 +20,10 @@ https://raw.githubusercontent.com/starkat99/unreal-schema/main/uproject.schema.j
 ```
 https://raw.githubusercontent.com/starkat99/unreal-schema/main/uplugin.schema.json
 ```
+
+# Visual Studio hint file
+
+Also provided is a [cpp.hint](cpp.hint) file for Unreal Engine Visual Studio solutions. It's not fully complete but does
+remove vast swaths of browsing database errors, especially for your own game projects. Simply download the hint file
+and place a copy in the root of your project, and a copy in the Engine folder of your Unreal Engine distribution. You
+can easily add to it as you find more browsing database errors.
