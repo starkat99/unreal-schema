@@ -1,0 +1,475 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://unrealengine.com/uplugin/v3",
+    "title": "Unreal Engine Project",
+    "description": "Unreal Engine Project Description File.",
+    "type": "object",
+    "properties": {
+        "FileVersion": {
+            "type": "integer",
+            "description": "Descriptor version number.",
+            "minimum": 1,
+            "maximum": 3,
+            "default": 3
+        },
+        "Version": {
+            "type": "integer",
+            "description": "Version number for the plugin. The version number must increase with every version of the plugin, so that the system can determine whether one version of a plugin is newer than another, or to enforce other requirements. This version number is not displayed in front-facing UI. Use the VersionName for that.",
+            "default": 1
+        },
+        "VersionName": {
+            "type": "string",
+            "description": "Name of the version for this plugin. This is the front-facing part of the version number. It doesn't need to match the version number numerically, but should be updated when the version number is increased accordingly.",
+            "default": "1.0.0"
+        },
+        "FriendlyName": {
+            "type": "string",
+            "description": "Friendly name of the plugin."
+        },
+        "Description": {
+            "type": "string",
+            "description": "Description of the plugin."
+        },
+        "Category": {
+            "type": "string",
+            "description": "The name of the category this plugin."
+        },
+        "CategoryPath": {
+            "type": "string",
+            "description": "DEPRECATED: Use \"Category\" instead. The name of the category this plugin.",
+            "deprecated": true
+        },
+        "CreatedBy": {
+            "type": "string",
+            "description": "The company or individual who created this plugin. This is an optional field that may be displayed in the user interface."
+        },
+        "CreatedByURL": {
+            "type": "string",
+            "description": "Hyperlink URL string for the company or individual who created this plugin. This is optional."
+        },
+        "DocsURL": {
+            "type": "string",
+            "description": "Hyperlink URL string for documentation about this plugin."
+        },
+        "MarketplaceURL": {
+            "type": "string",
+            "description": "Marketplace URL for this plugin. This URL will be embedded into projects that enable this plugin, so we can redirect to the marketplace if a user doesn't have it installed."
+        },
+        "SupportURL": {
+            "type": "string",
+            "description": "Support URL/email for this plugin."
+        },
+        "EngineVersion": {
+            "type": "string",
+            "description": "Version of the engine that this plugin is compatible with."
+        },
+        "SupportedTargetPlatforms": {
+            "type": "array",
+            "description": "List of target platforms supported by this plugin. This list will be copied to any plugin reference from a project file, to allow filtering entire plugins from staged builds.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "SupportedPrograms": {
+            "type": "array",
+            "description": "List of programs that are supported by this plugin.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "bIsPluginExtension": {
+            "type": "boolean",
+            "description": "If true, this plugin is from a platform extension extending another plugin."
+        },
+        "Modules": {
+            "type": "array",
+            "description": "List of all modules associated with this plugin.",
+            "items": {
+                "title": "Unreal Engine Module",
+                "description": "Description of a loadable Unreal Engine module.",
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "type": "string",
+                        "description": "Name of the module."
+                    },
+                    "Type": {
+                        "description": "Usage type of module.",
+                        "enum": [
+                            "Runtime",
+                            "RuntimeNoCommandlet",
+                            "RuntimeAndProgram",
+                            "CookedOnly",
+                            "UncookedOnly",
+                            "Developer",
+                            "DeveloperTool",
+                            "Editor",
+                            "EditorNoCommandlet",
+                            "EditorAndProgram",
+                            "Program",
+                            "ServerOnly",
+                            "ClientOnly",
+                            "ClientOnlyNoCommandlet"
+                        ],
+                        "default": "Runtime"
+                    },
+                    "LoadingPhase": {
+                        "description": "When should the module be loaded during the startup sequence?  This is sort of an advanced setting.",
+                        "enum": [
+                            "EarliestPossible",
+                            "PostConfigInit",
+                            "PostSplashScreen",
+                            "PreEarlyLoadingScreen",
+                            "PreLoadingScreen",
+                            "PreDefault",
+                            "Default",
+                            "PostDefault",
+                            "PostEngineInit",
+                            "None"
+                        ],
+                        "default": "Default"
+                    },
+                    "WhitelistPlatforms": {
+                        "type": "array",
+                        "description": "List of allowed platforms.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "BlacklistPlatforms": {
+                        "type": "array",
+                        "description": "List of disallowed platforms.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "WhitelistTargets": {
+                        "type": "array",
+                        "description": "List of allowed targets.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
+                    "BlacklistTargets": {
+                        "type": "array",
+                        "description": "List of disallowed targets.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
+                    "WhitelistTargetConfigurations": {
+                        "type": "array",
+                        "description": "List of allowed target configurations.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
+                    "BlacklistTargetConfigurations": {
+                        "type": "array",
+                        "description": "List of disallowed target configurations.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
+                    "WhitelistPrograms": {
+                        "type": "array",
+                        "description": "List of allowed programs.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "BlacklistPrograms": {
+                        "type": "array",
+                        "description": "List of allowed programs.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "AdditionalDependencies": {
+                        "type": "array",
+                        "description": "List of additional dependencies for building this module.",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "Name",
+                    "Type"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                    {
+                        "Name": "MyModule",
+                        "Type": "Runtime",
+                        "LoadingPhase": "Default"
+                    }
+                ]
+            }
+        },
+        "LocalizationTargets": {
+            "type": "array",
+            "description": "List of all localization targets associated with this plugin.",
+            "items": {
+                "type": "object",
+                "description": "Description of a localization target.",
+                "properties": {
+                    "Name": {
+                        "type": "string",
+                        "description": "Name of this target."
+                    },
+                    "LoadingPolicy": {
+                        "description": "Policy by which the localization data associated with a target should be loaded.",
+                        "enum": [
+                            "Never",
+                            "Always",
+                            "Editor",
+                            "Game",
+                            "PropertyNames",
+                            "ToolTips"
+                        ],
+                        "default": "Always"
+                    }
+                },
+                "required": [
+                    "Name"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "EnabledByDefault": {
+            "type": "boolean",
+            "description": "Whether this plugin should be enabled by default for all projects."
+        },
+        "CanContainContent": {
+            "type": "boolean",
+            "description": "Can this plugin contain content?"
+        },
+        "IsBetaVersion": {
+            "type": "boolean",
+            "description": "Marks the plugin as beta in the UI."
+        },
+        "IsExperimentalVersion": {
+            "type": "boolean",
+            "description": "Marks the plugin as experimental in the UI."
+        },
+        "Installed": {
+            "type": "boolean",
+            "description": "Signifies that the plugin was installed on top of the engine."
+        },
+        "RequiresBuildPlatform": {
+            "type": "boolean",
+            "description": "For plugins that are under a platform folder (eg. /PS4/), determines whether compiling the plugin requires the build platform and/or SDK to be available."
+        },
+        "Hidden": {
+            "type": "boolean",
+            "description": "For auto-generated plugins that should not be listed in the plugin browser for users to disable freely."
+        },
+        "ExplicitlyLoaded": {
+            "type": "boolean",
+            "description": "When true, this plugin's modules will not be loaded automatically nor will it's content be mounted automatically. It will load/mount when explicitly requested and LoadingPhases will be ignored."
+        },
+        "CanBeUsedWithUnrealHeaderTool": {
+            "type": "boolean",
+            "description": "DEPRECATED: Add \"UnrealHeaderTool\" to \"SupportedPrograms\" instead. Marks this plugin as supporting the UnrealHeaderTool.",
+            "deprecated": true
+        },
+        "PreBuildSteps": {
+            "description": "Custom steps to execute before building targets in this plugin. A mapping from host platform to a list of commands.",
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "description": "A list of build commands to execute on this host platform.",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "PostBuildSteps": {
+            "description": "Custom steps to execute after building targets in this plugin. A mapping from host platform to a list of commands.",
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "description": "A list of build commands to execute on this host platform.",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "Plugins": {
+            "type": "array",
+            "description": "List of dependent plugins.",
+            "items": {
+                "title": "Unreal Engine Plugin Reference",
+                "description": "Description for a Unreal Engine plugin reference. Contains the information required to enable or disable a plugin for a given platform.",
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "type": "string",
+                        "description": "Name of the plugin."
+                    },
+                    "Enabled": {
+                        "type": "boolean",
+                        "description": "Whether plugin should be enabled by default."
+                    },
+                    "Optional": {
+                        "type": "boolean",
+                        "description": "Whether this plugin is optional, and the game should silently ignore it not being present."
+                    },
+                    "Description": {
+                        "type": "string",
+                        "description": "Description of the plugin for users that do not have it installed."
+                    },
+                    "MarketplaceURL": {
+                        "type": "string",
+                        "description": "URL for this plugin on the marketplace, if the user doesn't have it installed."
+                    },
+                    "WhitelistPlatforms": {
+                        "type": "array",
+                        "description": "List of allowed platforms.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "BlacklistPlatforms": {
+                        "type": "array",
+                        "description": "List of disallowed platforms.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "WhitelistTargetConfigurations": {
+                        "type": "array",
+                        "description": "List of allowed target configurations.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
+                    "BlacklistTargetConfigurations": {
+                        "type": "array",
+                        "description": "List of disallowed target configurations.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
+                    "WhitelistTargets": {
+                        "type": "array",
+                        "description": "List of allowed targets.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
+                    "BlacklistTargets": {
+                        "type": "array",
+                        "description": "List of disallowed targets.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
+                    "SupportedTargetPlatforms": {
+                        "type": "array",
+                        "description": "The list of supported target platforms for this plugin. This field is copied from the plugin descriptor, and supplements the user's whitelisted and blacklisted platforms.",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "Name",
+                    "Enabled"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                    {
+                        "Name": "MyPlugin",
+                        "Enabled": true
+                    }
+                ]
+            }
+        }
+    },
+    "required": [
+        "FileVersion"
+    ],
+    "examples": [
+        {
+            "FileVersion": 3,
+            "Version": 1,
+            "VersionName": "1.0.0",
+            "FriendlyName": "MyPlugin",
+            "Description": "",
+            "Category": "",
+            "CreatedBy": "",
+            "CreatedByURL": "",
+            "DocsURL": "",
+            "MarketplaceURL": "",
+            "SupportURL": "",
+            "CanContainContent": false,
+            "IsBetaVersion": false,
+            "Installed": false,
+            "Modules": [
+                {
+                    "Name": "MyPlugin",
+                    "Type": "Runtime",
+                    "LoadingPhase": "Default"
+                }
+            ]
+        }
+    ]
+}

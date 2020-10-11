@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json.schemastore.org/schema-catalog",
+    "version": 1,
+    "schemas": [
+        {
+            "name": "Unreal Engine Project",
+            "description": "Schema for Unreal Engine project files.",
+            "fileMatch": [
+                "*.uproject"
+            ],
+            "url": "https://raw.githubusercontent.com/starkat99/unreal-schema/master/uproject.schema.json"
+        },
+        {
+            "name": "Unreal Engine Plugin",
+            "description": "Schema for Unreal Engine plugin files.",
+            "fileMatch": [
+                "*.uplugin"
+            ],
+            "url": "https://raw.githubusercontent.com/starkat99/unreal-schema/master/uplugin.schema.json"
+        }
+    ]
+}
