@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "$id": "http://unrealengine.com/uproject/v3",
     "title": "Unreal Engine Project",
     "description": "Unreal Engine Project Description File.",
@@ -176,14 +176,7 @@
                     "Name",
                     "Type"
                 ],
-                "additionalProperties": false,
-                "examples": [
-                    {
-                        "Name": "MyModule",
-                        "Type": "Runtime",
-                        "LoadingPhase": "Default"
-                    }
-                ]
+                "additionalProperties": false
             }
         },
         "Plugins": {
@@ -296,13 +289,7 @@
                     "Name",
                     "Enabled"
                 ],
-                "additionalProperties": false,
-                "examples": [
-                    {
-                        "Name": "MyPlugin",
-                        "Enabled": true
-                    }
-                ]
+                "additionalProperties": false
             }
         },
         "AdditionalPluginDirectories": {
@@ -357,13 +344,5 @@
     },
     "required": [
         "FileVersion"
-    ],
-    "examples": [
-        {
-            "FileVersion": 3,
-            "EngineAssociation": "4.25",
-            "Category": "",
-            "Description": ""
-        }
     ]
 }

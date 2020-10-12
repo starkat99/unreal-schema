@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "$id": "http://unrealengine.com/uplugin/v3",
     "title": "Unreal Engine Project",
     "description": "Unreal Engine Project Description File.",
@@ -36,8 +36,7 @@
         },
         "CategoryPath": {
             "type": "string",
-            "description": "DEPRECATED: Use \"Category\" instead. The name of the category this plugin.",
-            "deprecated": true
+            "description": "DEPRECATED: Use \"Category\" instead. The name of the category this plugin."
         },
         "CreatedBy": {
             "type": "string",
@@ -225,14 +224,7 @@
                     "Name",
                     "Type"
                 ],
-                "additionalProperties": false,
-                "examples": [
-                    {
-                        "Name": "MyModule",
-                        "Type": "Runtime",
-                        "LoadingPhase": "Default"
-                    }
-                ]
+                "additionalProperties": false
             }
         },
         "LocalizationTargets": {
@@ -299,8 +291,7 @@
         },
         "CanBeUsedWithUnrealHeaderTool": {
             "type": "boolean",
-            "description": "DEPRECATED: Add \"UnrealHeaderTool\" to \"SupportedPrograms\" instead. Marks this plugin as supporting the UnrealHeaderTool.",
-            "deprecated": true
+            "description": "DEPRECATED: Add \"UnrealHeaderTool\" to \"SupportedPrograms\" instead. Marks this plugin as supporting the UnrealHeaderTool."
         },
         "PreBuildSteps": {
             "description": "Custom steps to execute before building targets in this plugin. A mapping from host platform to a list of commands.",
@@ -434,42 +425,11 @@
                     "Name",
                     "Enabled"
                 ],
-                "additionalProperties": false,
-                "examples": [
-                    {
-                        "Name": "MyPlugin",
-                        "Enabled": true
-                    }
-                ]
+                "additionalProperties": false
             }
         }
     },
     "required": [
         "FileVersion"
-    ],
-    "examples": [
-        {
-            "FileVersion": 3,
-            "Version": 1,
-            "VersionName": "1.0.0",
-            "FriendlyName": "MyPlugin",
-            "Description": "",
-            "Category": "",
-            "CreatedBy": "",
-            "CreatedByURL": "",
-            "DocsURL": "",
-            "MarketplaceURL": "",
-            "SupportURL": "",
-            "CanContainContent": false,
-            "IsBetaVersion": false,
-            "Installed": false,
-            "Modules": [
-                {
-                    "Name": "MyPlugin",
-                    "Type": "Runtime",
-                    "LoadingPhase": "Default"
-                }
-            ]
-        }
     ]
 }
