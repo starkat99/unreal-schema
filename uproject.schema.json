@@ -80,21 +80,35 @@
                         ],
                         "default": "Default"
                     },
-                    "WhitelistPlatforms": {
+                    "PlatformAllowList": {
                         "type": "array",
                         "description": "List of allowed platforms.",
                         "items": {
                             "type": "string"
                         }
                     },
-                    "BlacklistPlatforms": {
+                    "WhitelistPlatforms": {
+                        "type": "array",
+                        "description": "DEPRECATED: Use \"PlatformAllowList\" instead. List of allowed platforms.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "PlatformDenyList": {
                         "type": "array",
                         "description": "List of disallowed platforms.",
                         "items": {
                             "type": "string"
                         }
                     },
-                    "WhitelistTargets": {
+                    "BlacklistPlatforms": {
+                        "type": "array",
+                        "description": "DEPRECATED: Use \"PlatformDenyList\" instead. List of disallowed platforms.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "TargetAllowList": {
                         "type": "array",
                         "description": "List of allowed targets.",
                         "items": {
@@ -108,7 +122,21 @@
                             ]
                         }
                     },
-                    "BlacklistTargets": {
+                    "WhitelistTargets": {
+                        "type": "array",
+                        "description": "DEPRECATED: Use \"TargetAllowList\" instead. List of allowed targets.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
+                    "TargetDenyList": {
                         "type": "array",
                         "description": "List of disallowed targets.",
                         "items": {
@@ -122,7 +150,21 @@
                             ]
                         }
                     },
-                    "WhitelistTargetConfigurations": {
+                    "BlacklistTargets": {
+                        "type": "array",
+                        "description": "DEPRECATED: Use \"TargetDenyList\" instead. List of disallowed targets.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
+                    "TargetConfigurationAllowList": {
                         "type": "array",
                         "description": "List of allowed target configurations.",
                         "items": {
@@ -136,7 +178,21 @@
                             ]
                         }
                     },
-                    "BlacklistTargetConfigurations": {
+                    "WhitelistTargetConfigurations": {
+                        "type": "array",
+                        "description": "DEPRECATED: Use \"TargetConfigurationAllowList\" instead. List of allowed target configurations.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
+                    "TargetConfigurationDenyList": {
                         "type": "array",
                         "description": "List of disallowed target configurations.",
                         "items": {
@@ -150,7 +206,35 @@
                             ]
                         }
                     },
+                    "BlacklistTargetConfigurations": {
+                        "type": "array",
+                        "description": "DEPRECATED: Use \"TargetConfigurationDenyList\" instead. List of disallowed target configurations.",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
+                    "ProgramAllowList": {
+                        "type": "array",
+                        "description": "List of allowed programs.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "WhitelistPrograms": {
+                        "type": "array",
+                        "description": "DEPRECATED: Use \"ProgramAllowList\" instead. List of allowed programs.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "ProgramDenyList": {
                         "type": "array",
                         "description": "List of allowed programs.",
                         "items": {
@@ -159,7 +243,7 @@
                     },
                     "BlacklistPrograms": {
                         "type": "array",
-                        "description": "List of allowed programs.",
+                        "description": "DEPRECATED: Use \"ProgramDenyList\" instead. List of allowed programs.",
                         "items": {
                             "type": "string"
                         }
@@ -170,6 +254,11 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "HasExplicitPlatforms": {
+                        "type": "boolean",
+                        "description": "When true, an empty PlatformAllowList is interpeted as 'no platforms' with the expectation that explict platforms will be added in plugin extensions.",
+                        "default": false
                     }
                 },
                 "required": [
@@ -207,23 +296,65 @@
                         "type": "string",
                         "description": "URL for this plugin on the marketplace, if the user doesn't have it installed."
                     },
+                    "PlatformAllowList": {
+                        "type": "array",
+                        "description": "List of platforms for which the plugin should be enabled (or all platforms if blank).",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "WhitelistPlatforms": {
                         "type": "array",
-                        "description": "List of allowed platforms.",
+                        "description": "DEPRECATED: Use \"PlatformAllowList\" instead. List of platforms for which the plugin should be enabled (or all platforms if blank).",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "PlatformDenyList": {
+                        "type": "array",
+                        "description": "List of target configurations for which the plugin should be disabled.",
                         "items": {
                             "type": "string"
                         }
                     },
                     "BlacklistPlatforms": {
                         "type": "array",
-                        "description": "List of disallowed platforms.",
+                        "description": "DEPRECATED: Use \"PlatformDenyList\" instead. List of target configurations for which the plugin should be disabled.",
                         "items": {
                             "type": "string"
                         }
                     },
+                    "TargetConfigurationAllowList": {
+                        "type": "array",
+                        "description": "List of target configurations for which the plugin should be enabled (or all target configurations if blank).",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
                     "WhitelistTargetConfigurations": {
                         "type": "array",
-                        "description": "List of allowed target configurations.",
+                        "description": "DEPRECATED: Use \"TargetConfigurationAllowList\" instead. List of target configurations for which the plugin should be enabled (or all target configurations if blank).",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Debug",
+                                "DebugGame",
+                                "Development",
+                                "Shipping",
+                                "Test"
+                            ]
+                        }
+                    },
+                    "TargetConfigurationDenyList": {
+                        "type": "array",
+                        "description": "List of target configurations for which the plugin should be disabled.",
                         "items": {
                             "enum": [
                                 "Unknown",
@@ -237,7 +368,7 @@
                     },
                     "BlacklistTargetConfigurations": {
                         "type": "array",
-                        "description": "List of disallowed target configurations.",
+                        "description": "DEPRECATED: Use \"TargetConfigurationDenyList\" instead. List of target configurations for which the plugin should be disabled.",
                         "items": {
                             "enum": [
                                 "Unknown",
@@ -249,9 +380,37 @@
                             ]
                         }
                     },
+                    "TargetAllowList": {
+                        "type": "array",
+                        "description": "List of targets for which the plugin should be enabled (or all targets if blank).",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
                     "WhitelistTargets": {
                         "type": "array",
-                        "description": "List of allowed targets.",
+                        "description": "DEPRECATED: Use \"TargetAllowList\" instead. List of targets for which the plugin should be enabled (or all targets if blank).",
+                        "items": {
+                            "enum": [
+                                "Unknown",
+                                "Game",
+                                "Server",
+                                "Client",
+                                "Editor",
+                                "Program"
+                            ]
+                        }
+                    },
+                    "TargetDenyList": {
+                        "type": "array",
+                        "description": "List of targets for which the plugin should be disabled.",
                         "items": {
                             "enum": [
                                 "Unknown",
@@ -265,7 +424,7 @@
                     },
                     "BlacklistTargets": {
                         "type": "array",
-                        "description": "List of disallowed targets.",
+                        "description": "DEPRECATED: Use \"TargetDenyList\" instead. List of targets for which the plugin should be disabled.",
                         "items": {
                             "enum": [
                                 "Unknown",
@@ -283,6 +442,11 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "HasExplicitPlatforms": {
+                        "type": "boolean",
+                        "description": "When true, empty SupportedTargetPlatforms and PlatformAllowList are interpreted as 'no platforms' with the expectation that explicit platforms will be added in plugin platform extensions.",
+                        "default": false
                     }
                 },
                 "required": [
